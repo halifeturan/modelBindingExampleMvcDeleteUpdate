@@ -1,0 +1,12 @@
+﻿@model modelBindingExampleMvc.Models.Entities.Student
+
+@{
+    ViewData["Title"] = "Student";
+}
+<form asp-action="StudentCreate" asp-controller="Student" method="post">
+
+    <input type="text" name="name" placeholder = "Name" />
+    <input type="text" name="sname" placeholder = "Sname" />
+    <input type="submit" value = "Create"/>
+
+</form>

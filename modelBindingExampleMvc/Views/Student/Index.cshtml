@@ -1,0 +1,49 @@
+﻿@model IEnumerable<modelBindingExampleMvc.Models.Entities.Student>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="StudentCreate">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.sname)
+            </th>
+            <th>js confirm</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sname)
+            </td>
+            <td>
+              <form asp-action="StudentDelete" asp-controller="Student" method="post">            
+                  <input type="hidden" name="id" value="@item.id"/>
+                  <input type="submit" style="display:none;" class="btn btn-outline-danger" id="@item.id" value="Delete"/>
+              </form>
+              <a class="btn btn-danger text-light" onclick="conf(@item.id,'@item.name')" >
+                  Delete
+              </a>
+               <a class="btn btn-danger text-light" href="/Student/StudentUpdate/@item.id">
+                  Update
+              </a>
+            </td>
+ 
+        </tr>
+}
+    </tbody>
+</table>
